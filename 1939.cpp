@@ -57,12 +57,15 @@ int main(){
         memset(visited, false, sizeof(visited));
         mid=(left+right)/2;
         int flag=bfs(mid);
-        if(flag==1) left = mid+1;
+        if(flag==1) {
+            left = mid+1;
+            result = mid;
+            }
         else{
             right = mid-1;
         }
     }
-    printf("%d", right);
+    printf("%d", result);
     
 
 

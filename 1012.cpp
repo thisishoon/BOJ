@@ -1,38 +1,33 @@
 #include <iostream>
-#include <vector>
-#include <stack>
 #include <queue>
+#include <vector>
+#include <string.h>
 #include <algorithm>
 
 using namespace std;
-
 int m, n, k;
-int result;
 int arr[51][51];
 int visited[51][51];
-struct point{
-    int x;
-    int y;
-}p;
-vector<point> baechu;
-queue<point> q;
-int dy[4]={0,0,1,-1};
-int dx[4]={1,-1,0,0};
+int dy[4]={0, 0, 1, -1};
+int dx[4]={1, -1, 0, 0};
 
-void bfs(){
-    result++;
+void bfs(int y, int x){
+    queue<pair<int, int> > q;
+    q.push(make_pair(y,x));
+    visited[y][x]=1;
     while(!q.empty()){
-        point pnt = q.front();
+        int cur_y = q.front().first;
+        int cur_x = q.front().second;
+        q.pop();
         for(int i=0; i<4; i++){
-            int nx=pnt.x+dx[i];
-            int ny=pnt.y+dy[i];
-            if(nx<0 || nx>=n || ny<0 || ny>=m) continue;
-            if(visited[ny][nx]==0){
-                if(arr[ny][nx]==1){
-                    visited[ny][nx]=1;
-                    point next;
-                    next.y = ny; next.x = nx;
-                    q.push(next);
+            int next_y = cur_y + dy[i];
+            int next_x = cur_x + dx[i];
+            if(next_y<0 || next_x<0 || next_y>=n || next_x>=m) continue;
+            
+            if(arr[next_y][next_x]==1){
+                if(visited[next_y][next_x]==0){
+                        visited[next_y][next_x]=1;
+                        q.push(make_pair(next_y, next_x));
                 }
             }
         }
@@ -40,35 +35,29 @@ void bfs(){
 }
 
 int main(){
-    int T;
-    scanf("%d", &T);
-    while(T--){
-        scanf("%d %d %d", &m, &n, &k);
+    int t;
+    cin>>t;
+    while(t--){
+        memset(arr, false, sizeof(arr));
+        memset(visited, false, sizeof(visited));
+
+        int result=0;
+        cin>>m>>n>>k;
         for(int i=0; i<k; i++){
             int a, b;
             cin>>a>>b;
-            arr[a][b]=1;
-            point bb;
-            bb.y=a; bb.x=b;
-            baechu.push_back(bb);
+            arr[b][a]=1;
         }
-        cout<<"test";
-        for(int i=0; i<baechu.size(); i++){
-            point temp = baechu[i];
-            if(visited[temp.x][temp.y]==0){
-                visited[temp.x][temp.y]=1;
-                q.push(temp);
-                bfs();
-            } 
-        }
-        printf("%d\n", result);
-        
-        for(int i=0; i<50; i++){
-            for(int j=0; j<50; j++){
-                arr[i][j]=0; visited[i][j]=0;
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                if(arr[i][j]==1 && visited[i][j]==0){
+                    //cout<<i<<","<<j<<endl;
+                    bfs(i,j);
+                    result++;
+                }
             }
         }
-        baechu.clear();
+        cout<<result<<endl;
     }
     return 0;
 }

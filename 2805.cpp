@@ -19,7 +19,7 @@ int main(){
     while(left<=right){
         mid=(left+right)/2;
         long long income=0;
-        for(int i=0; i<n; i++){ //범위를 잘못잡았다
+        for(int i=0; i<n; i++){ //범위를 잘못잡았다.
             int temp=arr[i]-mid;
             if(temp<0) temp=0;
             income+=temp;
