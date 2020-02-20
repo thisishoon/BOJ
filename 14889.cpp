@@ -31,11 +31,11 @@ int backtrack(int cnt, int pos){
     }
 
     for(int i=pos; i<n; i++){ //n명까지 뽑을까 말까
-        if(!visited[i]){
+        //if(!visited[i]){
             visited[i]=1;
             backtrack(cnt+1, i+1);
             visited[i]=0;
-        }
+        //}
     }
     return 0;
 }
