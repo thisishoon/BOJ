@@ -50,18 +50,18 @@ struct node{
     int count;
 };
 
-int check_area(int y, int x){
+int check_area(int y, int x, int direct){
     if(y+height-1>n || x+weight-1>m) return 0;
-    
-    for(int i=0; i<height; i++){
-        if(arr[y+i][x]==1) return 0;
-        if(arr[y+i][x+weight-1]==1) return 0;
-    }
-    
-    for(int j=0; j<weight; j++){
-        if(arr[y][x+j]==1) return 0;
-        if(arr[y+height-1][x+j]==1) return 0;
-    }
+    if(direct>1)
+        for(int i=0; i<height; i++){
+            if(arr[y+i][x]==1) return 0;
+            if(arr[y+i][x+weight-1]==1) return 0;
+        }
+    else
+        for(int j=0; j<weight; j++){
+            if(arr[y][x+j]==1) return 0;
+            if(arr[y+height-1][x+j]==1) return 0;
+        }
     
     return 1;
 }
@@ -89,7 +89,7 @@ void bfs(int a, int b){
             if(nextY<1 || nextX<1 || nextY>n || nextX>m) continue;
             if(visited[nextY][nextX]==1) continue;
             // cout<<nextY<<" "<<nextX<<endl;
-            int flag = check_area(nextY, nextX);
+            int flag = check_area(nextY, nextX, d);
 
             if(flag==1){
                 visited[nextY][nextX]=1;
