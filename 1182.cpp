@@ -8,13 +8,13 @@ int result;
 
 void dfs(int index, int sum, int length){
     
-    //if(index==n){
+    if(index==n){
         if(length>0){
-            cout<<index<<" "<<sum<<endl;
+            //cout<<index<<" "<<sum<<endl;
             if(sum==s) result++;
         }
-        //return;
-    //}
+        return;
+    }
     
     dfs(index+1, sum+arr[index+1], length+1);
     dfs(index+1, sum, length);

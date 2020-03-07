@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-char arr[8][8];
+char arr[6][6];
 vector<pair<int, int> > v;
 int dy[4]={1,-1,0,0};
 int dx[4]={0,0,1,-1};

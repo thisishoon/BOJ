@@ -48,14 +48,14 @@ void backtracking(int index, int count){
         // cout<<endl;
         return;
     }
-    for(int i=0; i<empty.size(); i++){
+    for(int i=index; i<empty.size(); i++){
         int y = empty[i].first;
         int x = empty[i].second;
-        if(visited[y][x]==1) continue;
-        visited[y][x]=1;
+        // if(visited[y][x]==1) continue;
+        // visited[y][x]=1;
         arr[y][x]=1;
         backtracking(i+1, count+1);
-        visited[y][x]=0;
+        // visited[y][x]=0;
         arr[y][x]=0;
     }
     return;

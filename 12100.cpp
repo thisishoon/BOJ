@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <queue>
 using namespace std;
-int arr[50][50];
+int arr[22][22];
 int result=0;
 int n;
 int test=0;
@@ -118,7 +118,7 @@ void check_max(){
 
 void simulation(int cnt){
     if(cnt==5) return;
-    int temp[52][52];
+    int temp[22][22];
     for(int i=1; i<=n; i++) for(int j=1; j<=n; j++) temp[i][j]=arr[i][j];
     for(int d=0; d<4; d++){ //4direction
         if(d==0){
@@ -146,7 +146,7 @@ void simulation(int cnt){
             for(int i=1; i<=n; i++) for(int j=1; j<=n; j++) arr[i][j]=temp[i][j];
         }
     }
-    return;
+    //return;
 }
 
 int main(){

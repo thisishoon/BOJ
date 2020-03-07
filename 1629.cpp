@@ -23,6 +23,6 @@ long long power(int n, int k){
 
 int main(){
     cin>>a>>b>>c;
-    cout<<power(a,b)<<endl;
+    cout<<power(a,b)%c<<endl;
     return 0;
 }
