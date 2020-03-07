@@ -1,9 +1,11 @@
-#include <iostream>
-#include <algorithm>
-#include <queue>
-#include <vector>
-#include <string>
-#include <set>
+// #include <iostream>
+// #include <algorithm>
+// #include <queue>
+// #include <vector>
+// #include <string>
+// #include <set>
+
+#include <bits/stdc++.h>
 using namespace std;
 int n;
 
