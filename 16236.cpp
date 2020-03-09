@@ -64,6 +64,7 @@ int main(){
         }
     }
     while(1){
+
         int flag = bfs(startY, startX);
         if(flag==999999999) break;
         else{
@@ -78,6 +79,7 @@ int main(){
                 }
             }
             // eat
+            // cout<<arr[fishY][fishX]<<" "<<fishY<<" "<<fishX<<endl;
             eat_size++;
             arr[fishY][fishX]=0;
             startY=fishY; startX=fishX;
