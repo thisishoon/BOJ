@@ -51,10 +51,10 @@ int main(){
     //cout<<one_mid1<<"->"<<mid1_mid2<<"->"<<mid2_end<<endl;
     //cout<<one_mid2<<"->"<<mid1_mid2<<"->"<<mid1_end<<endl;
     
+    int result = 999999999;
+    result = min( (one_mid1+mid1_mid2+mid2_end), (one_mid2+mid1_mid2+mid1_end));
 
-    int result = min( (one_mid1+mid1_mid2+mid2_end), (one_mid2+mid1_mid2+mid1_end));
-
-    if(result>800000){
+    if(result>=800000){
         cout<<"-1"<<endl;
         return 0;
     }
