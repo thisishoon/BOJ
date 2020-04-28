@@ -54,6 +54,7 @@ void beeBFS(){
         int y = q.front().first;
         int x = q.front().second;
         q.pop();
+        maxMinute = max(maxMinute, bee[y][x]);
         if(y==poo.first && x==poo.second) maxMinute = bee[y][x];
         for(int d=0; d<4; d++){
             int ny = y + dy[d];
@@ -80,7 +81,7 @@ int main(){
     }
     beeBFS();
 
-    int left = 0; int right = n*n*2; int answer = -1;
+    int left = 0; int right = 800*801; int answer = -1;
     for(;left<right;){
         int mid = (left+right)/2;
         if(run(mid)){

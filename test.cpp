@@ -1,39 +1,70 @@
 #include <iostream>
-#include <vector>
-using namespace std;
-vector<int> v[10];
-
-#include <string>
-#include <vector>
 #include <algorithm>
-#include <string.h>
 #include <map>
-#include <set>
-#include <iostream>
+#include <vector>
 
 
 
 using namespace std;
 
+int T, N, i, h,
 
-int main(){
-    string temp = "abd def gggg ggggg gggg";
-    char str[20];
-    strcpy(str, temp.c_str());
-    char* ptr = strtok(str, " ");
-    set<string> s;
-    while(ptr != NULL){
-        s.insert(ptr);
-        ptr = strtok(NULL, " ");
-    }
-    for(auto it : s){
-        cout<<it<<endl;
-    }
-    vector<int> v;
-    v.push_back(1); v.push_back(3000); v.push_back(2);
-    sort(v.begin(), v.end());
-    for(auto it : v){
-        cout<<it<<endl;
-    }
-    
+c[21] = {13,8,3,18,14,9,4,0,19,15,10,5,1,20,16,11,6,2,17,12,7 },
+
+u[6][21] = {
+
+			{ 20,19,18,27,8,7,6,11,28,5,4,3,10,29,2,1,0,9,45,46,47 },
+
+			{ 18,21,24,6,11,14,17,36,3,10,13,16,39,0,9,12,15,42,47,50,53 },
+
+			{ 6,7,8,11,18,19,20,27,14,21,22,23,30,17,24,25,26,33,36,37,38 },
+
+			{ 26,23,20,38,33,30,27,8,41,34,31,28,5,44,35,32,29,2,51,48,45 },
+
+			{ 24,25,26,17,36,37,38,33,16,39,40,41,34,15,42,43,44,35,53,52,51 },
+
+			{ 42,43,44,15,53,52,51,35,12,50,49,48,32,9,47,46,45,29,0,1,2 } };
+
+char s[86], t[21], g[54], d[2], in[6] = { 'o','g','w','b','r','y' };
+
+int main() {
+
+	std::ios::sync_with_stdio(false); cin.tie(0);
+
+	cin >> T;
+
+	for (i = 0; i < 6; i++) s["BLURFD"[i]] = i;
+
+	while (T--) {
+
+		cin >> N; vector<pair<int, int> > v;
+
+		while (N--) {
+
+			cin >> d[0] >> d[1]; d[0] = s[d[0]];
+
+			v.push_back(make_pair(d[0], d[1]));
+
+		}
+
+		i = -1; while ((++i) < 55) g[i] = in[i / 9];
+
+		for (i = 0; i < v.size(); i++) {
+
+			h = -1; while ((++h) <= 20) t[h] = g[u[v[i].first][h]];
+
+			h = -1; while ((++h) <= 20) g[u[v[i].first][h]] = v[i].second>44 ? t[20-c[h]] : t[c[h]];
+
+		}
+
+		for (i = 18; i < 27; i++) {
+
+			cout << g[i];
+
+			if ((i % 3) == 2) cout << '\n';
+
+		}
+
+	}
+
 }
