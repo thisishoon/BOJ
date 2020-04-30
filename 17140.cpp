@@ -100,7 +100,7 @@ int main(){
     while(1){
         func();
         //prin();
-        cout<<R<<" "<<C<<endl;
+        // cout<<R<<" "<<C<<endl;
         answer++;
         if(answer>100){
             cout<<"-1"<<endl;

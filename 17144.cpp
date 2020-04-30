@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <string.h>
 
 using namespace std;
 int r, c, t;
@@ -107,14 +108,10 @@ int main(){
     }
     while(t--){
         spread();
-        spread_print();
         wind();
-        spread_print();
-
     }
     check();
     cout<<answer<<endl;
-    
 
     return 0;
 }

@@ -74,7 +74,6 @@ void run(){
         }
     }
     memcpy(arr, temp, sizeof(temp));
-    
 }
 
 int main(){
