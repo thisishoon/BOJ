@@ -6,26 +6,26 @@ using namespace std;
 int n,m,t;
 int x, d, k;
 int arr[55][55];
+int temp[55];
 
 void rotate(){
-    for(int i=1; i*x<=n; i*=2){
-        int num = k%4;
+    for(int i=x; i<=n; i+=x){
         if(d==0){   //시계
-            for(int k=1; k<=num; k++){
-                int temp=arr[i*x][m];
-                for(int j=m; j>=2; j--){
-                    arr[i*x][j]=arr[i*x][j-1];
-                }
-                arr[i*x][1]=temp;
+            // int temp[55];
+            for(int j=1; j<=m; j++){
+                temp[((j-1+k)%m)+1] = arr[i][j];
+            }
+            for(int j=1; j<=m; j++){
+                arr[i][j]=temp[j];
             }
         }
         else{   //반시계
-            for(k=1; k<=num; k++){
-                int temp=arr[i*x][1];
-                for(int j=1; j<m; j++){
-                    arr[i*x][j]=arr[i*x][j+1];
-                }
-                arr[i*x][m]=temp;
+            // int temp[55];
+            for(int j=1; j<=m; j++){
+                temp[((j-1+m-k)%m)+1] = arr[i][j];
+            }
+            for(int j=1; j<=m; j++){
+                arr[i][j]=temp[j];
             }
         }
     }
@@ -33,7 +33,6 @@ void rotate(){
 void check(){
     int flag=0;
     int temp[55][55];
-    memset(temp, 0, sizeof(temp));
     memcpy(temp, arr, sizeof(arr));
     double sum=0;
     int cnt=0;
@@ -47,7 +46,8 @@ void check(){
     }
     double avg = 0;
     if(cnt>0) avg = sum / cnt;
-    else avg=0;
+    else return;
+    
 
     for(int i=1; i<=n; i++){
         for(int j=1; j<=m; j++){
@@ -56,7 +56,7 @@ void check(){
             if(arr[i][j]==arr[i][next]){
                 if(arr[i][j]!=0){
                     temp[i][j]=temp[i][next]=0;
-                flag=1;
+                    flag=1;
                 }
             }
         }
@@ -72,6 +72,8 @@ void check(){
             }
         }
     }
+    
+
     if(flag==0){
         for(int i=1; i<=n; i++){
             for(int j=1; j<=m; j++){
@@ -108,7 +110,7 @@ int main(){
         rotate();
         //prin();
         check();
-        // prin();
+        //prin();
     }
     int answer=0;
     for(int i=1; i<=n; i++){
