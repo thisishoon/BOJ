@@ -14,7 +14,7 @@ int main(){
     for(int i=0, d=1; i<str2.length(); i++, d*=10){
         num2 += ((str2[i]-48) *d);
     }
-    cout<<num1<<" "<<num2<<endl;
+    // cout<<num1<<" "<<num2<<endl;
     cout<<max(num1, num2)<<endl;
 
     return 0;
