@@ -1,63 +1,88 @@
 #include <string>
 #include <vector>
-#include <unordered_map>
-#include <set>
+#include <iostream>
+#include <deque>
+#include <algorithm>
 
 using namespace std;
+long long answer =0;
+char op[3] = {'+','-','*'};
+vector<string> v;
 
-unordered_map <string, int> m;
+int priority[3];
 
-vector<int> solution(vector<string> gems) {
-    vector<int> answer;
-    set<string> s;
-    for(int i=0; i<gems.size(); i++){
-        s.insert(gems[i]);
-    }
-    int n = s.size();
-    
-    if(n==gems.size()){
-        answer.push_back(1);
-        answer.push_back(n);
-        return answer;
-    }
-    
-    vector<pair<int, int> > v;
-    int len = gems.size();
-    int left = 0;
-    int right = 0;
-    while(right < gems.size()) { 
-        if(m.size() == n) {
-            len = min(len, right - left);
-            v.push_back({left, right});
+vector<string> cal(vector<string> math, int oper){
+    for(int i=0; i<math.size(); i++){
+        if(oper==0){
+            if(math[i]=="+"){
+                int num = stoi(math[i-1]) + stoi(math[i+1]);
+                math.insert(math.begin()+i-1, to_string(num));
+                math.erase(math.begin()+i, math.begin()+i+3);
+                i--;
+            }
         }
-        if(m[gems[left]] >= 2) {
-            m[gems[left]]--;
-            left++;
+        else if(oper==1){
+             if(math[i]=="-"){
+                int num = stoi(math[i-1]) - stoi(math[i+1]);
+                math.insert(math.begin()+i-1, to_string(num));
+                math.erase(math.begin()+i, math.begin()+i+3);
+                i--;
+            }
         }
-        else {
-            m[gems[right]]++;
-            right++;
+        else{
+             if(math[i]=="*"){
+                int num = stoi(math[i-1]) * stoi(math[i+1]);
+                math.insert(math.begin()+i-1, to_string(num));
+                math.erase(math.begin()+i, math.begin()+i+3);
+                i--;
+            }
         }
     }
-    
-    while(1) {
-        if(m[gems[left]] == 1) break;
-        m[gems[left]]--;
-        left++;
+    return math;
+}
+
+
+void func(){
+    for(int i=0; i<3; i++){
+        vector<string> temp;
+        temp.assign(v.begin(), v.end());
+        vector<string> first = cal(temp, i);
+        for(int j=0; j<3; j++){
+            if(j==i) continue;
+            vector<string> second = cal(first, j);
+            for(int k=0; k<3; k++){
+                if(k==i || k==j) continue;
+                vector<string> third = cal(second, k);
+                answer = max(answer, (long long)abs(stoi(third[0])));
+            }
+        }
     }
-    
-    if(m.size() == n) {
-        len = min(len, right - left);
-        v.push_back({left, right});
-    }
-    
-    for(int i = 0 ; i < v.size() ; ++i) {
-        if(v[i].second - v[i].first == len) {
-            answer.push_back(v[i].first + 1);
-            answer.push_back(v[i].second);
-            break;
+}
+
+long long solution(string expression){
+    v.clear();
+    answer=0;
+    string temp="";
+    for(int i=0; i<expression.size(); i++){
+        if(expression[i]>='0' && expression[i]<='9'){
+            temp += expression[i];
+            if(i==expression.size()-1) v.push_back(temp);
+        }
+        else{
+            v.push_back(temp);
+            temp="";
+            v.push_back(string(1,expression[i]));
         }
     }
     
+    func();
+    cout<<answer<<endl;
     return answer;
+}
+
+int main(){
+    string str = "100-200*300-500+20";
+    solution(str);
+    solution("50*6-3*2");
+    return 0;
 }
