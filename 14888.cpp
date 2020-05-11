@@ -56,7 +56,6 @@ int main(){
         arr[i]=temp;
     }
     cin>>a>>b>>c>>d;
-    //scanf("%d %d %d %d", &plus, &minus, &multi, &divide);
     result = arr[0];
     backtrack(0);
     cout<<mx<<endl<<mn<<endl;
