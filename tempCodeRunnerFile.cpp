@@ -1,8 +1,5 @@
-for(int i=k; i<n; i++){
-    //     if(--m[arr[i-k]] == 0 ) m.erase(arr[i-k]);
-    //     m[arr[i]]++;
-    //     m[c]++;
-    //     answer = max(answer, (int)m.size());
-    //     cout<<m.size()<<" ";
-    //     if(--m[c] == 0 ) m.erase(c);        
-    // }
+or(int i=0; i<de.size(); i++){
+        //     cout<<de[i]<<" ";
+        // }
+        // cout<<de.size()<<endl;
+        // cout<<endl;
