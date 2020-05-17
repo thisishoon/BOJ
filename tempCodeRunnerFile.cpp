@@ -1,2 +1,1 @@
-
-            }
+cout<<result<<endl;
