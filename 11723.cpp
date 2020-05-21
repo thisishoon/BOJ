@@ -1,42 +1,42 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
-#include <set>
 
 using namespace std;
-set<int> s;
+int bit=0;
 
 int main(){
+    ios_base :: sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
     int m; cin>>m;
 
     for(int i=1; i<=m; i++){
         string str; cin>>str;
         if(str.compare("add")==0){
             int x; cin>>x;
-            s.insert(x);
+            bit = bit | (1<<x) ;
         }
         else if(str.compare("remove")==0){
             int x; cin>>x;
-            s.erase(x);
+            bit = bit & ~(1<<x);
         }
         else if(str.compare("check")==0){
             int x; cin>>x;
-            if(s.find(x)!=s.end()) cout<<"1\n";
-            else cout<<"0"<<endl;
+            if((bit & (1<<x))) cout<<"1\n";
+            else cout<<"0\n";
         }
         else if(str.compare("toggle")==0){
             int x; cin>>x;
-            if(s.find(x)!=s.end()) s.erase(x);
-            else s.insert(x);
+            if((bit & (1<<x))) bit = bit ^ (1<<x);
+            else bit = bit | (1<<x);
+            // bit = bit ^ (1<<x);
         }
         else if(str.compare("all")==0){
-            s.clear();
-            for(int i=1; i<=20; i++){
-                s.insert(i);
-            }
+            bit = (1<<21)-1;
         }
         else if(str.compare("empty")==0){
-            s.clear();
+            bit=0;
         }
     }
 
