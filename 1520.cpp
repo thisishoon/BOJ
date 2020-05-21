@@ -14,7 +14,7 @@ int n, m;
 int dfs(int y, int x){
     if(y==n && x==m)    return 1;
 
-    if(visited[y][x]) return dp[y][x];
+    if(visited[y][x]) return dp[y][x];  //한번 체크한 곳은 다시 체크할 필요 없다.
     visited[y][x]=1;
     for(int d=0; d<4; d++){
         int ny = y+dy[d];
