@@ -1,6 +1,10 @@
 #include <iostream>
 #include <algorithm>
 #include <limits>
+#include <queue>
+
+priority_queue<int, vector<int>, greater<int> > pq;
+
 
 using namespace std;
 const int maxINT = 2100000000;

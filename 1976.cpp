@@ -7,7 +7,7 @@ int parent[222];
 
 int find(int x){
     if(x==parent[x]) return x;
-    else return find(parent[x]);
+    else return parnet[x] = find(parent[x]);
 }
 
 void merge(int a, int b){
