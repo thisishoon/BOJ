@@ -27,7 +27,7 @@ vector<int> solution(vector<string> gems) {
     int left = 0;
     int right = 0;
     while(right < gems.size()) { 
-        cout<<left<<" "<<right<<endl;
+
         if(m.size() == n) { //어느 순간 답이 될 수 있는 경로를 찾아
             len = min(len, right - left);
             v.push_back({left, right});
@@ -46,7 +46,6 @@ vector<int> solution(vector<string> gems) {
         if(m[gems[left]] == 1) break;
         m[gems[left]]--;
         left++;
-        
     }
     
     if(m.size() == n) {
