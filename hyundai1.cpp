@@ -6,7 +6,7 @@ using namespace std;
 
 int month[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-int day[365];
+int day[365];   //문제! 운이 좋게도 전역변수가 할당된 데이터부분에서 운이 좋게 쓰레기값이 없는 부분을 참조하여 예시를 풀었음.
 int bronze;
 int silver;
 int gold;
@@ -55,7 +55,7 @@ vector<int> solution(vector<string> purchase) {
    
    for (int i = 1; i <= 365; i++) {
       int sum = 0;
-      for (int j = i; j > i - 30; j--) {
+      for (int j = i; j > i - 30; j--) {    //매번 최근 30일을 순회하는 것보다 슬라이딩 윈도우 방식으로 n번만에 더하여함
          if (j == 0) break;
          sum += day[j];
       }
@@ -88,4 +88,7 @@ int main(){
     for(int i=0; i<answer.size(); i++){
         cout<<answer[i]<<" ";
     }
+    cout<<endl;
+    cout<<switchDay(1,1)<<endl;
+    cout<<switchDay(12,31)<<endl;
 }

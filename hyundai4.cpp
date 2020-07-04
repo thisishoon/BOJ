@@ -65,7 +65,6 @@ bool boom(){
         for(int i=temp.size(); i<=6; i++){
             arr[6-i][j]=0;
         }
-
     }
 
     return flag;
