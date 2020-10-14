@@ -38,5 +38,7 @@ int solution(int N) {
 }
 
 int main(){
-	cout<<solution(32)<<endl;
+	if(-1){
+        cout<<"@";
+    }
 }

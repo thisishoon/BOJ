@@ -22,9 +22,14 @@ vector<string> split(string a, char split) {
 
 int main(){
     vector<string> result = split("09:04:39", ':');
-    for(string str:result){
-        cout<<str<<" ";
-    }
+    // for(string str:result){
+    //     cout<<str<<" ";
+    // }
+	string str = "1";
+	str+='0';
+	str+=1;
+
+	cout<<str;
 
 
     return 0;
