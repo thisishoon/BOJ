@@ -1,1 +1,2 @@
-if(ascii<'0' || ascii>'9') return -1;
+oved_prev = head;
+        // removed = re
