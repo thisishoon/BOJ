@@ -1,1 +1,1 @@
-
+if(ascii<'0' || ascii>'9') return -1;
