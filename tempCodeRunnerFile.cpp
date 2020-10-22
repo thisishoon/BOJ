@@ -1,2 +1,2 @@
-oved_prev = head;
-        // removed = re
+
+    int pivot = start;
