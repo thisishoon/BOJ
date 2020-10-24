@@ -176,6 +176,30 @@ string _itoa(int num){  //O(N)
     return result;
 }
 
+void eratos(int n){
+    int check[100];
+    memset(check, 0, sizeof(check));
+    for(int i=2; i<=n; i++){
+        if(check[i]) continue;
+        for(int j=i+i; j<=n; j+=i){
+            check[j]=1;
+        }
+    }
+    for(int i=1; i<=n; i++){
+        if(check[i]==0) cout<<i<<" ";
+    }
+    cout<<endl;
+    return;
+}
+
+int gcd(int a, int b){
+    while(b!=0){
+        int c = a%b;
+        a=b;
+        b=c;
+    }
+    return a;
+}
 
 
 int main(){
@@ -199,5 +223,8 @@ int main(){
     cout<<"문자열에서 연속적으로 반복되는 가장 긴 길이 "<<count_longest_length("aaabbbe")<<endl;
     cout<<"atoi 함수 구현 "<<_atoi("12345")<<endl;
     cout<<"itoa 함수 구현 "<<_itoa(12345)<<endl;
+    eratos(50);
+    cout<<"최대 공약수 "<<gcd(72, 30)<<endl;
+    cout<<"최대 공배수 "<<72*30/gcd(72,30)<<endl;
     
 }
